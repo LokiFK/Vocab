@@ -5,12 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import vocabs.Vokabel;
 import vocabs.Vokabelkasten;
 
 import java.awt.*;
 
 public class Main extends Application {
 
+    private final Vokabelkasten vocBox = new Vokabelkasten(200);;
     @Override
     public void start(Stage primaryStage) throws Exception{
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -23,6 +25,14 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    protected void addVoc(String german, String english) {
+        vocBox.addVokabel(new Vokabel(german, english));
+    }
+
+    public Vokabelkasten getVocBox() {
+        System.out.println(vocBox.toString());
+        return vocBox;
+    }
 
     public static void main(String[] args) {
         launch(args);

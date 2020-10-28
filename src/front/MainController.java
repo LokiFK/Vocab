@@ -7,13 +7,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import vocabs.Vokabel;
 import vocabs.Vokabelkasten;
 
 import java.io.IOException;
 
 public class MainController extends Controller {
-
-    private Vokabelkasten vocBox = new Vokabelkasten(200);
 
     @FXML
     public Button btnVocList;

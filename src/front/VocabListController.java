@@ -17,9 +17,16 @@ public class VocabListController extends Controller {
     public Button btnBack = new Button();
     public GridPane grid = new GridPane();
     public ScrollPane listVocabs = new ScrollPane();
+    public Button loadVoc;
 
     @FXML
     public void launchMainScene() throws IOException {
         returnToMainScene((Stage) btnBack.getScene().getWindow());
+    }
+
+    public void loadVoc() {
+        Vokabelkasten vokabelkasten = getVoc();
+        System.out.println(vokabelkasten.toString() + 1);
+        listVocabs.setContent(new Label(vokabelkasten.toString()));
     }
 }
