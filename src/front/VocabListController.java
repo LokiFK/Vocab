@@ -25,8 +25,7 @@ public class VocabListController extends Controller {
     }
 
     public void loadVoc() {
-        Vokabelkasten vokabelkasten = getVoc();
-        System.out.println(vokabelkasten.toString() + 1);
-        listVocabs.setContent(new Label(vokabelkasten.toString()));
+        System.out.println(Main.getVokabelkasten().toString() + 1);
+        listVocabs.setContent(new Label(Main.getVokabelkasten().toString()));
     }
 }

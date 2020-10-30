@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import vocabs.Vokabelkasten;
 
 import java.awt.*;
 import java.io.IOException;
@@ -16,20 +15,12 @@ public abstract class Controller {
     protected double width = dimension.getWidth()/4;
     protected double height = dimension.getHeight()/4;
 
-//    Standard method to return to main screen
+    //    Standard method to return to main screen
     protected void returnToMainScene(Stage stage) throws IOException {
         switchScene(stage, "mainScene.fxml", "Main Window");
     }
 
-    public void addVoc(String german, String english) {
-        new Main().addVoc(german, english);
-    }
-
-    public Vokabelkasten getVoc() {
-        return new Main().getVocBox();
-    }
-
-//    Standard method to switch scene
+    //    Standard method to switch scene
     protected void switchScene(Stage stage, String scene, String title) throws IOException {
 //        All scenes are supposed to have the same size
         width = stage.getScene().getWidth();

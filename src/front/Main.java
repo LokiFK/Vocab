@@ -12,10 +12,20 @@ import java.awt.*;
 
 public class Main extends Application {
 
-    private final Vokabelkasten vocBox = new Vokabelkasten(200);;
+    private static Vokabelkasten vokabelkasten;
+
+    public Main() {
+        System.out.println(123);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception{
+//        Initialise variables
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        vokabelkasten = new Vokabelkasten(200);
+        System.out.println(vokabelkasten.getVokabelanzahl());
+
+//        Do not change this code
         Parent root = FXMLLoader.load(getClass().getResource("mainScene.fxml"));
         primaryStage.setTitle("Vocabulary Tester");
         primaryStage.setScene(new Scene(root, screenSize.getWidth()/4, screenSize.getHeight()/4));
@@ -25,16 +35,29 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    protected void addVoc(String german, String english) {
-        vocBox.addVokabel(new Vokabel(german, english));
-    }
-
-    public Vokabelkasten getVocBox() {
-        System.out.println(vocBox.toString());
-        return vocBox;
-    }
-
     public static void main(String[] args) {
         launch(args);
     }
+
+    //    Save the dimensions
+    private final Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+    protected double width = dimension.getWidth()/4;
+    protected double height = dimension.getHeight()/4;
+
+   /* public Controller(int length) {
+        vokabelkasten = new Vokabelkasten(length);
+        System.out.println(22);
+    }*/
+
+    public static Vokabelkasten getVokabelkasten() {
+        System.out.println(vokabelkasten.toString());
+        return vokabelkasten;
+    }
+
+    public static void addVoc(String german, String english) {
+        System.out.println(english + german);
+        vokabelkasten.addVokabel(new Vokabel(german, english));
+        System.out.println(vokabelkasten.toString());
+    }
+
 }

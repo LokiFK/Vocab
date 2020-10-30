@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AddVocController extends MainController {
+public class AddVocController extends Controller {
 
 
     @FXML
@@ -22,8 +22,8 @@ public class AddVocController extends MainController {
 
     @FXML
     public void saveVocab() {
-        addVoc(lbGerman.getText(), lbEnglish.getText());
-        System.out.println(getVoc().toString());
+        Main.addVoc(lbGerman.getText(), lbEnglish.getText());
+        System.out.println(Main.getVokabelkasten().toString());
         lbGerman.setText("");
         lbEnglish.setText("");
     }
