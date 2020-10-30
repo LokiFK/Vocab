@@ -1,4 +1,4 @@
-package front;
+package controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +17,7 @@ public abstract class Controller {
 
     //    Standard method to return to main screen
     protected void returnToMainScene(Stage stage) throws IOException {
-        switchScene(stage, "mainScene.fxml", "Main Window");
+        switchScene(stage, "main_scene.fxml", "Main Window");
     }
 
     //    Standard method to switch scene
@@ -26,7 +26,7 @@ public abstract class Controller {
         width = stage.getScene().getWidth();
         height = stage.getScene().getHeight();
 //        Loads parent
-        Parent root = FXMLLoader.load(getClass().getResource(scene));
+        Parent root = FXMLLoader.load(getClass().getResource("drawable/" + scene));
 //        Sets scene
         stage.setScene(new Scene(root, width, height));
         stage.setTitle(title);

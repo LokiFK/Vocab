@@ -1,4 +1,4 @@
-package front;
+package controller;
 
 import javafx.fxml.FXML;
 
@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import vocabs.Vokabelkasten;
 
 import java.io.IOException;
 
@@ -25,7 +24,7 @@ public class VocabListController extends Controller {
     }
 
     public void loadVoc() {
-        System.out.println(Main.getVokabelkasten().toString() + 1);
-        listVocabs.setContent(new Label(Main.getVokabelkasten().toString()));
+        System.out.println(Main.getVocabBox().toString() + 1);
+        listVocabs.setContent(new Label(Main.getVocabBox().toString()));
     }
 }

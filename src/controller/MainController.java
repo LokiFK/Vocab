@@ -1,14 +1,8 @@
-package front;
+package controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import vocabs.Vokabel;
-import vocabs.Vokabelkasten;
 
 import java.io.IOException;
 
@@ -22,21 +16,21 @@ public class MainController extends Controller {
 
     @FXML
     public void launchVocList() throws IOException {
-        switchScene((Stage) btnVocList.getScene().getWindow(), "vocabList.fxml", "Vocabulary");
+        switchScene((Stage) btnVocList.getScene().getWindow(), "vocab_list_scene.fxml", "Vocabulary");
     }
 
     @FXML
     public void launchAddVoc() throws IOException {
-        switchScene((Stage) btnAddVoc.getScene().getWindow(), "addVoc.fxml", "Add vocabulary");
+        switchScene((Stage) btnAddVoc.getScene().getWindow(), "add_vocab_scene.fxml", "Add vocabulary");
     }
 
     @FXML
     public void launchTestVoc() throws IOException {
-        switchScene((Stage) btnTestVoc.getScene().getWindow(), "testVoc.fxml", "Test Vocabulary");
+        switchScene((Stage) btnTestVoc.getScene().getWindow(), "test_vocab_scene.fxml", "Test Vocabulary");
     }
 
     @FXML
     public void launchStats() throws IOException {
-        switchScene((Stage) btnStats.getScene().getWindow(), "statsScene.fxml", "Statistics");
+        switchScene((Stage) btnStats.getScene().getWindow(), "stats_scene.fxml", "Statistics");
     }
 }

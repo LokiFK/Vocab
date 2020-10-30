@@ -3,5 +3,5 @@ module Vocab {
     requires javafx.controls;
     requires java.desktop;
 
-    opens front;
+    opens controller;
 }
