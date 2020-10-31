@@ -2,9 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -23,8 +21,12 @@ public class VocabListController extends Controller {
         returnToMainScene((Stage) btnBack.getScene().getWindow());
     }
 
+//    load all vocabs into scroll pane
     public void loadVoc() {
-        System.out.println(Main.getVocabBox().toString() + 1);
-        listVocabs.setContent(new Label(Main.getVocabBox().toString()));
+        if (Main.getVocabBox().size() > 0) {
+            listVocabs.setContent(new Label(Main.getVocabBox().toString()));
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Die Vokabelliste ist leer!\nGehe in das 'Vokabel hinzufügen'-Menü,\num Vokabeln hinzuzufügen.", ButtonType.CLOSE).show();
+        }
     }
 }

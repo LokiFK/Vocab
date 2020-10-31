@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
@@ -14,6 +13,8 @@ import java.io.IOException;
 public class TestVocabController extends Controller {
 
     private int random;
+    private int wrong;
+    private int correct;
 
     @FXML
     public Button btnBack;
@@ -26,36 +27,48 @@ public class TestVocabController extends Controller {
     public GridPane gridMain;
 
     public void launchMainScene() throws IOException {
+//        save the statistics
+        Main.addDatasetCorrectWrongRatio(wrong, correct);
         returnToMainScene((Stage) btnBack.getScene().getWindow());
     }
 
-
     @FXML
     public void verifyVocab() {
-        if (chBGermanEnglish.isSelected()) {
-            if (tfAnswer.getText().equals(Main.getVocabBox().getVocab(random).getEnglish())) {
-                lbAnswerCorrect.setText("Deine Antwort ist richtig! Herrzlichen Glückwunsch.");
-                startTest();
+//        check whether vocabs are correct or not
+        if (Main.getVocabBox().size() > 0) {
+            if (chBGermanEnglish.isSelected()) {
+                if (tfAnswer.getText().equals(Main.getVocabBox().getVocab(random).getEnglish())) {
+                    lbAnswerCorrect.setText("Deine Antwort ist richtig! Herrzlichen Glückwunsch.");
+                    correct++;
+                    startTest();
+                } else {
+                    lbAnswerCorrect.setText("Deine Antwort ist falsch. Versuchs nochmal.");
+                    wrong++;
+                    startTest();
+                }
             } else {
-                lbAnswerCorrect.setText("Deine Antwort ist falsch. Versuchs nochmal.");
-                startTest();
+                if (tfAnswer.getText().equals(Main.getVocabBox().getVocab(random).getDeutsch())) {
+                    lbAnswerCorrect.setText("Deine Antwort ist richtig! Herrzlichen Glückwunsch.");
+                    correct++;
+                    startTest();
+                } else {
+                    lbAnswerCorrect.setText("Deine Antwort ist falsch. Versuchs nochmal.");
+                    wrong++;
+                    startTest();
+                }
             }
         } else {
-            if (tfAnswer.getText().equals(Main.getVocabBox().getVocab(random).getDeutsch())) {
-                lbAnswerCorrect.setText("Deine Antwort ist richtig! Herrzlichen Glückwunsch.");
-                startTest();
-            } else {
-                lbAnswerCorrect.setText("Deine Antwort ist falsch. Versuchs nochmal.");
-                startTest();
-            }
+            new Alert(AlertType.ERROR, "Die Vokabelliste ist leer!\nGehe in das 'Vokabel hinzufügen'-Menü,\num Vokabeln hinzuzufügen.", ButtonType.CLOSE).show();
         }
     }
 
+//    unchecks opposite checkbox
     @FXML
     public void checkBoxEnglishChecked() {
         chBGermanEnglish.setSelected(!chBGermanEnglish.isSelected());
     }
 
+//    unchecks opposite checkbox
     @FXML
     public void checkBoxGermanChecked() {
            chBEnglishGerman.setSelected(!chBEnglishGerman.isSelected());
@@ -63,6 +76,7 @@ public class TestVocabController extends Controller {
 
     @FXML
     public void startTest() {
+//        calls random vocab into the label
         random = (int) (Math.random()*Main.getVocabBox().size());
         if (chBGermanEnglish.isSelected()) {
             if (Main.getVocabBox() != null && Main.getVocabBox().size() > 0)
@@ -78,11 +92,13 @@ public class TestVocabController extends Controller {
             new Alert(AlertType.ERROR, "Bitte eins der beiden Boxen auswählen", ButtonType.CLOSE).show();
     }
 
+//    if enter pressed then check if vocab is correct
     @FXML
     public void checkIfEnterKeyTyped(KeyEvent keyEvent) {
-        if(keyEvent.getCode() == KeyCode.ENTER)
+        if(keyEvent.getCode() == KeyCode.ENTER) {
             System.out.println(1);
             verifyVocab();
+        }
     }
 
 }

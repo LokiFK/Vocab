@@ -14,6 +14,7 @@ public class MainController extends Controller {
     public Button btnTestVoc;
     public Button btnStats;
 
+//    launch various scenes
     @FXML
     public void launchVocList() throws IOException {
         switchScene((Stage) btnVocList.getScene().getWindow(), "vocab_list_scene.fxml", "Vocabulary");

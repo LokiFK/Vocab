@@ -31,6 +31,7 @@ public class AddVocabController extends Controller {
 //        add vocabulary to vocabBox
         if (!(lbGerman.getText().equals("") && lbEnglish.getText().equals(""))) {
             Main.addVocab(lbGerman.getText(), lbEnglish.getText());
+//            reset the textfields
             lbGerman.setText("");
             lbEnglish.setText("");
         } else {
@@ -41,6 +42,7 @@ public class AddVocabController extends Controller {
 
     @FXML
     public void checkIfEnterKeyTyped(KeyEvent keyEvent) {
+//        if enter then save the vocab
         if(keyEvent.getCode() == KeyCode.ENTER)
             saveVocab();
     }
