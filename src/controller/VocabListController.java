@@ -26,8 +26,6 @@ public class VocabListController extends Controller {
     private final Image deleteImg = new Image(getClass().getResourceAsStream("delete.png"));
     private final Image editImg = new Image(getClass().getResourceAsStream("edit.png"));
 
-    private int listItem = Main.getCurrentVocab();
-
     @FXML
     public void launchMainScene() throws IOException {
         returnToMainScene((Stage) btnBack.getScene().getWindow());
@@ -49,7 +47,7 @@ public class VocabListController extends Controller {
         Pane content;
         BorderPane borderPane = new BorderPane();
         GridPane gridPane = new GridPane();
-        borderPane.setPrefWidth(listVocabs.getWidth()-10);
+        borderPane.setPrefWidth(listVocabs.getWidth()-20);
         borderPane.setLeft(new Label(Main.getVocabBox().getVocab(index).toString()));
         gridPane.add(editBtn, 0, 0);
         gridPane.add(deleteBtn, 1, 0);
@@ -97,10 +95,6 @@ public class VocabListController extends Controller {
                 e.printStackTrace();
             }
         });
-    }
-
-    public int getListItem() {
-        return listItem;
     }
 
     private void createDeleteOnClickListener(Button btn, int index) {

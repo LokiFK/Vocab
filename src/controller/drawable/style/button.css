@@ -10,10 +10,12 @@
 
 .frame {
     -fx-background-color: #555B6E;
+    -fx-background: #555B6E;
 }
 
 .label {
     -fx-fill: #BEE3DB;
+    -fx-stroke: #bee3db;
 }
 
 .borderLayout {

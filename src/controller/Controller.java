@@ -20,7 +20,7 @@ public abstract class Controller {
 
     //    Standard method to return to main screen
     protected void returnToMainScene(Stage stage) throws IOException {
-        switchScene(stage, "main_scene.fxml", "Main Window");
+        switchScene(stage, "main_scene.fxml", "Hauptfenster");
     }
 
     //    Standard method to switch scene

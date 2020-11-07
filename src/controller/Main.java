@@ -25,9 +25,8 @@ public class Main extends Application {
     private static LinkedList<Integer> correctWrongRatio;
     private static LinkedList<Integer> correctWords;
     private static LinkedList<Integer> wrongWords;
-    private static HashMap<Queue<Vocab>, String> practiceRounds;
 
-    private String[] test = {"Z", "Y", "A", "F", "B", "G", "A", "Z", "W", "U", "P"};
+    private final String[] test = {"Z", "Y", "A", "F", "B", "G", "A", "Z", "W", "U", "P"};
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -37,18 +36,18 @@ public class Main extends Application {
         correctWrongRatio = new LinkedList<>();
         correctWords = new LinkedList<>();
         wrongWords = new LinkedList<>();
-        practiceRounds = new HashMap<>();
-        for (int i = 0; i < test.length; i++) {
-            vocabBox.addVocab(new Vocab(test[i], test[i]));
+        for (String s : test) {
+            vocabBox.addVocab(new Vocab(s, s));
         }
 
 //        Load the primary stage
         Parent root = FXMLLoader.load(getClass().getResource("drawable/main_scene.fxml"));
-        primaryStage.setTitle("Vocabulary Tester");
+        primaryStage.setTitle("Hauptfenster");
         primaryStage.setScene(new Scene(root, screenSize.getWidth()/4, screenSize.getHeight()/4));
         primaryStage.setResizable(true);
         primaryStage.setMinWidth(600);
         primaryStage.setMinHeight(400);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
@@ -77,10 +76,12 @@ public class Main extends Application {
         wrongWords.add(wrong);
     }
 
+//    set the index of the current vocab
     public static void setCurrentVocab(int currentVocab) {
         Main.currentVocab = currentVocab;
     }
 
+//    get the index of the current vocab
     public static int getCurrentVocab() {
         return currentVocab;
     }
@@ -98,18 +99,5 @@ public class Main extends Application {
 //    returns a list of all correct words
     public static LinkedList<Integer> getCorrectWords() {
         return correctWords;
-    }
-
-    public static boolean addPracticeRound(String name) {
-        if (practiceRounds.size() > 0) {
-            for (int i = 0; i < practiceRounds.size(); i++) {
-                if (practiceRounds.containsValue(name))
-                    return false;
-            }
-        }
-        Queue<Vocab> tempQueue = new LinkedList<>();
-
-        practiceRounds.put(new LinkedList<>(), name);
-        return true;
     }
 }

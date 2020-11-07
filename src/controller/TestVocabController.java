@@ -21,10 +21,8 @@ public class TestVocabController extends Controller {
     public Label lbVocab;
     public CheckBox chBEnglishGerman;
     public CheckBox chBGermanEnglish;
-    public Button btnStart;
     public TextField tfAnswer;
     public Label lbAnswerCorrect;
-    public GridPane gridMain;
 
     public void launchMainScene() throws IOException {
 //        save the statistics
@@ -58,7 +56,7 @@ public class TestVocabController extends Controller {
                 }
             }
         } else {
-            new Alert(AlertType.ERROR, "Die Vokabelliste ist leer!\nGehe in das 'Vokabel hinzufügen'-Menü,\num Vokabeln hinzuzufügen.", ButtonType.CLOSE).show();
+            newAlert("Die Vokabelliste ist leer");
         }
     }
 
@@ -82,14 +80,14 @@ public class TestVocabController extends Controller {
             if (Main.getVocabBox() != null && Main.getVocabBox().size() > 0)
                 lbVocab.setText(Main.getVocabBox().getVocab(random).getDeutsch());
             else
-                new Alert(AlertType.ERROR, "Die Vokabelliste ist leer!\nGehe in das 'Vokabel hinzufügen'-Menü,\num Vokabeln hinzuzufügen.", ButtonType.CLOSE).show();
+                newAlert("Die Vokabelliste ist leer");
         } else if (chBEnglishGerman.isSelected()){
             if (Main.getVocabBox() != null && Main.getVocabBox().size() > 0)
                 lbVocab.setText(Main.getVocabBox().getVocab(random).getEnglish());
             else
-                new Alert(AlertType.ERROR, "Die Vokabelliste ist leer!\nGehe in das 'Vokabel hinzufügen'-Menü,\num Vokabeln hinzuzufügen.", ButtonType.CLOSE).show();
+                newAlert("Die Vokabelliste ist leer");
         } else
-            new Alert(AlertType.ERROR, "Bitte eins der beiden Boxen auswählen", ButtonType.CLOSE).show();
+            newAlert("Die Vokabelliste ist leer");
     }
 
 //    if enter pressed then check if vocab is correct

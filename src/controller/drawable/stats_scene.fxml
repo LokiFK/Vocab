@@ -6,41 +6,46 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatsSceneController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="129.33331298828125" minHeight="10.0" prefHeight="82.99999618530273" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="261.99995930989587" minHeight="10.0" prefHeight="240.00000381469727" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="76.3333740234375" minHeight="10.0" prefHeight="74.3333740234375" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Statistik">
-         <font>
-            <Font name="SansSerif Italic" size="18.0" />
-         </font>
-      </Label>
-      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-         <children>
-            <LineChart fx:id="lineChart">
-              <xAxis>
-                <NumberAxis label="Test Nummer" fx:id="xAxis" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis fx:id="yAxis" label="Verhältnis" />
-              </yAxis>
-            </LineChart>
-            <Button fx:id="loadStats" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadData" prefHeight="25.0" prefWidth="659.0" text="Statistik laden">
-               <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </VBox.margin></Button>
-         </children>
-      </VBox>
-      <Button fx:id="btnBack" mnemonicParsing="false" onAction="#launchMainScene" text="Zurück" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </GridPane.margin>
-      </Button>
-   </children>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+          prefWidth="600.0" styleClass="frame" stylesheets="@style/button.css" xmlns="http://javafx.com/javafx/11.0.1"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.StatsSceneController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="129.33331298828125" minHeight="10.0" prefHeight="82.99999618530273"
+                        vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="261.99995930989587" minHeight="10.0" prefHeight="240.00000381469727"
+                        vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="76.3333740234375" minHeight="10.0" prefHeight="74.3333740234375" vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <Label alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Statistik"
+           textFill="#bee3db">
+        <font>
+          <Font name="SansSerif Italic" size="18.0"/>
+        </font>
+    </Label>
+    <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+        <LineChart fx:id="lineChart">
+            <xAxis>
+                <NumberAxis label="Test Nummer" tickLabelFill="#bee3db"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Verhältnis" tickLabelFill="#bee3db"/>
+            </yAxis>
+        </LineChart>
+        <Button fx:id="loadStats" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                mnemonicParsing="false" onAction="#loadData" prefHeight="25.0" prefWidth="659.0"
+                styleClass="buttons" text="Statistik laden">
+            <VBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </VBox.margin>
+        </Button>
+    </VBox>
+    <Button fx:id="btnBack" mnemonicParsing="false" onAction="#launchMainScene" styleClass="buttons" text="Zurück"
+            GridPane.rowIndex="2">
+        <GridPane.margin>
+          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+        </GridPane.margin>
+    </Button>
 </GridPane>
