@@ -1,11 +1,10 @@
 package vocabulary;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class VocabBox {
 
-  private final List<Vocab> vocabList;
+  private List<Vocab> vocabList;
 
   public VocabBox() {
     vocabList = new LinkedList<>();
@@ -13,6 +12,7 @@ public class VocabBox {
 
   public void addVocab(Vocab v) {
     vocabList.add(v);
+    sortVocabBox();
   }
 
   public int size() {
@@ -32,6 +32,25 @@ public class VocabBox {
       }
     }
     return false;
+  }
+
+  public void deleteVocab(int nr) {
+    vocabList.remove(nr);
+    sortVocabBox();
+  }
+
+  public void sortVocabBox() {
+      for (int i = 1; i < vocabList.size(); i++) {
+        for (int j = i; j > 0 && vocabList.get(j-1).getDeutsch().compareTo(vocabList.get(j).getDeutsch()) > 0; j--) {
+          Vocab temp = vocabList.get(j);
+          updateVocab(vocabList.get(j-1), j);
+          updateVocab(temp, j-1);
+        }
+      }
+  }
+
+  public void updateVocab(Vocab vocab, int nr) {
+    vocabList.set(nr, vocab);
   }
 
   @Override

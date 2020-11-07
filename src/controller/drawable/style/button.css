@@ -1,0 +1,21 @@
+.buttons {
+    -fx-background-color: #FAF9F9;
+    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(one-pass-box, rgba(190, 227, 219, 0.8), 10, 0, 0, 0);
+}
+
+.buttons:hover {
+    -fx-effect: innershadow(one-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+}
+
+.frame {
+    -fx-background-color: #555B6E;
+}
+
+.label {
+    -fx-fill: #BEE3DB;
+}
+
+.borderLayout {
+    -fx-border-color: rgba(0, 0, 0, 0.1);
+}

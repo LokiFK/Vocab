@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -9,7 +8,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-import java.awt.event.KeyAdapter;
 import java.io.IOException;
 
 public class AddVocabController extends Controller {
@@ -29,7 +27,7 @@ public class AddVocabController extends Controller {
     @FXML
     public void saveVocab() {
 //        add vocabulary to vocabBox
-        if (!(lbGerman.getText().equals("") && lbEnglish.getText().equals(""))) {
+        if (!(lbGerman.getText().equals("") || lbEnglish.getText().equals(""))) {
             Main.addVocab(lbGerman.getText(), lbEnglish.getText());
 //            reset the textfields
             lbGerman.setText("");
