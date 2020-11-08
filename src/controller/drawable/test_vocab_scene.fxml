@@ -4,9 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#checkIfEnterKeyTyped" prefHeight="400.0" prefWidth="600.0" styleClass="frame" stylesheets="@style/button.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TestVocabController">
+<?import javafx.scene.text.Font?>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#checkIfEnterKeyTyped" prefHeight="400.0" prefWidth="600.0" styleClass="frame" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TestVocabController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
    </columnConstraints>
@@ -32,7 +31,7 @@
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </HBox.margin>
          </CheckBox>
-         <Button mnemonicParsing="false" onAction="#startTest" styleClass="buttons" text="Start">
+         <Button mnemonicParsing="false" onAction="#startTest" styleClass="elements" text="Start">
             <HBox.margin>
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </HBox.margin>
@@ -72,12 +71,12 @@
             <Insets left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
       </Label>
-      <TextField fx:id="tfAnswer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Bitte Antwort hier eingeben..." styleClass="buttons">
+      <TextField fx:id="tfAnswer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Bitte Antwort hier eingeben..." styleClass="elements">
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" />
          </VBox.margin>
       </TextField>
-      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#verifyVocab" styleClass="buttons" text="Überprüfen">
+      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#verifyVocab" styleClass="elements" text="Überprüfen">
          <VBox.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </VBox.margin>
@@ -88,7 +87,7 @@
          </VBox.margin>
       </Label>
    </VBox>
-   <Button fx:id="btnBack" mnemonicParsing="false" onAction="#launchMainScene" styleClass="buttons" text="Zurück" GridPane.rowIndex="2">
+   <Button fx:id="btnBack" mnemonicParsing="false" onAction="#launchMainScene" styleClass="elements" text="Zurück" GridPane.rowIndex="2">
       <GridPane.margin>
          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </GridPane.margin>

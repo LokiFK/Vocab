@@ -9,10 +9,8 @@ import vocabulary.Vocab;
 import vocabulary.VocabBox;
 
 import java.awt.*;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class Main extends Application {
 

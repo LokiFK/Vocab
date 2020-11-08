@@ -53,6 +53,7 @@ public class StatsSceneController extends Controller {
     }
 
     private void addCorrectAnswers(XYChart.Series<Integer, Integer> series) {
+//        show the amount of correct answers
         series.setName("Richtige Antworten");
         for (int i = 0; i < Main.getCorrectWords().size(); i++) {
             series.getData().add(new XYChart.Data<>(i, Main.getCorrectWords().get(i)));

@@ -3,9 +3,8 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#checkIfEnterKeyTyped" prefHeight="400.0" prefWidth="600.0" styleClass="frame" stylesheets="@style/button.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditVocabController">
+<?import javafx.scene.text.Font?>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#checkIfEnterKeyTyped" prefHeight="400.0" prefWidth="600.0" styleClass="frame" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditVocabController">
   <columnConstraints>
     <ColumnConstraints />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -27,12 +26,12 @@
     <GridPane.margin>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
     </GridPane.margin>
-    <TextField fx:id="germanTxt" styleClass="buttons" GridPane.columnIndex="1" GridPane.rowIndex="1">
+    <TextField fx:id="germanTxt" styleClass="elements" GridPane.columnIndex="1" GridPane.rowIndex="1">
       <GridPane.margin>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </GridPane.margin>
     </TextField>
-    <TextField fx:id="englishTxt" styleClass="buttons" GridPane.rowIndex="1">
+    <TextField fx:id="englishTxt" styleClass="elements" GridPane.rowIndex="1">
       <GridPane.margin>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </GridPane.margin>
@@ -61,12 +60,12 @@
     <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
-    <Button fx:id="backBtn" mnemonicParsing="false" onAction="#goToParentScene" styleClass="buttons" text="Zurück">
+    <Button fx:id="backBtn" mnemonicParsing="false" onAction="#goToParentScene" styleClass="elements" text="Zurück">
       <GridPane.margin>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </GridPane.margin>
     </Button>
-    <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveChanges" styleClass="buttons" text="Speichern" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+    <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveChanges" styleClass="elements" text="Speichern" GridPane.columnIndex="1" GridPane.halignment="CENTER">
       <GridPane.margin>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </GridPane.margin>

@@ -44,7 +44,7 @@ public abstract class Controller {
 
 //    adds standard button style to button
     protected void addStyleClassToButton(Node node) {
-        node.getStyleClass().add("buttons");
+        node.getStyleClass().add("elements");
     }
 
 }

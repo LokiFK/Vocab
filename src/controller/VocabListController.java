@@ -43,6 +43,7 @@ public class VocabListController extends Controller {
         }
     }
 
+//    creates a new line of vocab
     private Pane createNewVocabLine(Button deleteBtn, Button editBtn, int index) {
         Pane content;
         BorderPane borderPane = new BorderPane();
@@ -63,6 +64,7 @@ public class VocabListController extends Controller {
         return content;
     }
 
+//    adds a new line of vocab
     private void addNewVocabLine(int index) {
         listVocabs.setContent(createNewVocabLine(createDeleteBtn(), createEditBtn(), index));
     }
@@ -75,9 +77,10 @@ public class VocabListController extends Controller {
         return getButton(editImg);
     }
 
-    private Button getButton(Image editImg) {
+//    adds style, img to button
+    private Button getButton(Image img) {
         Button btn = new Button();
-        ImageView imageView = new ImageView(editImg);
+        ImageView imageView = new ImageView(img);
         imageView.setFitWidth(20);
         imageView.setFitHeight(20);
         btn.setGraphic(imageView);
@@ -86,6 +89,7 @@ public class VocabListController extends Controller {
         return btn;
     }
 
+//    open edit stage when clicked
     private void createEditOnClickListener(Button btn, int index) {
         btn.setOnAction(actionEvent -> {
             try {
@@ -97,6 +101,7 @@ public class VocabListController extends Controller {
         });
     }
 
+//    delete element when clicked
     private void createDeleteOnClickListener(Button btn, int index) {
         btn.setOnAction(actionEvent -> {
             Main.getVocabBox().deleteVocab(index);
