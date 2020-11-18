@@ -28,7 +28,6 @@ public class EditVocabController extends Controller {
         System.out.println(germanTxt.getText());
         if (!(germanTxt.getText().equals("") || englishTxt.getText().equals(""))) {
             Main.getVocabBox().updateVocab(new Vocab(germanTxt.getText(), englishTxt.getText()), Main.getCurrentVocab());
-            Main.getVocabBox().sortVocabBox();
             germanTxt.setText("");
             englishTxt.setText("");
         } else {

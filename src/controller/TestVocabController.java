@@ -73,7 +73,7 @@ public class TestVocabController extends Controller {
     @FXML
     public void startTest() {
 //        calls random vocab into the label
-        random = (int) (Math.random()*Main.getVocabBox().size());
+        random = (int) (Math.random()*Main.getVocabBox().size()-1);
         if (chBGermanEnglish.isSelected()) {
             if (Main.getVocabBox() != null && Main.getVocabBox().size() > 0)
                 lbVocab.setText(Main.getVocabBox().getVocab(random).getDeutsch());
@@ -92,7 +92,6 @@ public class TestVocabController extends Controller {
     @FXML
     public void checkIfEnterKeyTyped(KeyEvent keyEvent) {
         if(keyEvent.getCode() == KeyCode.ENTER) {
-            System.out.println(1);
             verifyVocab();
         }
     }

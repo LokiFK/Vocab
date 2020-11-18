@@ -1,68 +1,82 @@
 package vocabulary;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class VocabBox {
 
-  private List<Vocab> vocabList;
+  private Node<Vocab> startNode;
 
-  public VocabBox() {
-    vocabList = new LinkedList<>();
-  }
-
-  public void addVocab(Vocab v) {
-    vocabList.add(v);
-    sortVocabBox();
+  public boolean addVocab(Vocab v) {
+    if (startNode == null) {
+      startNode = new Node<>(v);
+      return true;
+    }
+    if (startNode.getEntry().getDeutsch().compareTo(v.getDeutsch()) > 0) {
+      Node<Vocab> node = new Node<>(v);
+      node.setNextNode(startNode);
+      startNode = node;
+      return true;
+    }
+    Node<Vocab> cursor = startNode;
+    while (cursor.getNextNode() != null) {
+      if (cursor.getNextNode().getEntry().getDeutsch().compareTo(v.getDeutsch()) < 0) {
+        cursor = cursor.getNextNode();
+      } else break;
+    }
+    Node<Vocab> node = new Node<>(v);
+    node.setNextNode(cursor.getNextNode());
+    cursor.setNextNode(node);
+    return true;
   }
 
   public int size() {
-    return vocabList.size();
+    int count = 0;
+    if (startNode != null) count = 1;
+    Node<Vocab> cursor = startNode;
+    while (cursor != null) {
+      cursor = cursor.getNextNode();
+      count++;
+    }
+    return count;
   }
 
   public Vocab getVocab(int nr) {
-    return vocabList.get(nr);
+    Node<Vocab> cursor = startNode;
+    while (nr > 0) {
+      if (cursor.getNextNode() != null) {
+        cursor = cursor.getNextNode();
+      } else
+        return null;
+      nr--;
+    }
+    return cursor.getEntry();
   }
 
   public boolean deleteVocab(String name) {
-    int loopCounter = 0;
-    for (Vocab vocab : vocabList) {
-      if (vocab.toString().equals(name)) {
-        vocabList.remove(loopCounter);
-        return true;
-      }
-    }
-    return false;
+    return true;
   }
 
   public void deleteVocab(int nr) {
-    vocabList.remove(nr);
-    sortVocabBox();
-  }
-
-  public void sortVocabBox() {
-      for (int i = 1; i < vocabList.size(); i++) {
-        for (int j = i; j > 0 && vocabList.get(j-1).getDeutsch().compareTo(vocabList.get(j).getDeutsch()) > 0; j--) {
-          Vocab temp = vocabList.get(j);
-          updateVocab(vocabList.get(j-1), j);
-          updateVocab(temp, j-1);
-        }
-      }
+    Node<Vocab> cursor = startNode;
+    while (nr > 1) {
+      if (cursor.getNextNode() != null) {
+        cursor = cursor.getNextNode();
+      } else return;
+      nr--;
+    }
+    cursor.setNextNode(cursor.getNextNode().getNextNode());
   }
 
   public void updateVocab(Vocab vocab, int nr) {
-    vocabList.set(nr, vocab);
+    deleteVocab(nr);
+    addVocab(vocab);
   }
 
   @Override
   public String toString() {
-    StringBuilder output = new StringBuilder();
-    for (Vocab vocab : vocabList) {
-      if (vocab != null) {
-        output.append(("\n")).append(vocab.toString());
-      }
+    StringBuilder stringBuilder = new StringBuilder();
+    for (int i = 0; i < size(); i++) {
+      stringBuilder.append(getVocab(i).toString()).append("\n");
     }
-    return output.toString();
+    return stringBuilder.toString();
   }
 
 }

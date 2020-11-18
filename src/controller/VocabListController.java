@@ -49,11 +49,13 @@ public class VocabListController extends Controller {
         BorderPane borderPane = new BorderPane();
         GridPane gridPane = new GridPane();
         borderPane.setPrefWidth(listVocabs.getWidth()-20);
-        borderPane.setLeft(new Label(Main.getVocabBox().getVocab(index).toString()));
-        gridPane.add(editBtn, 0, 0);
-        gridPane.add(deleteBtn, 1, 0);
-        borderPane.setRight(gridPane);
-        borderPane.getStyleClass().add("borderLayout");
+        if (Main.getVocabBox().getVocab(index) != null) {
+            borderPane.setLeft(new Label(Main.getVocabBox().getVocab(index).toString()));
+            gridPane.add(editBtn, 0, 0);
+            gridPane.add(deleteBtn, 1, 0);
+            borderPane.setRight(gridPane);
+            borderPane.getStyleClass().add("borderLayout");
+        }
         if (listVocabs.getContent() == null)
             content = new Pane(borderPane);
         else
