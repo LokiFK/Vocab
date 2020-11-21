@@ -1,27 +1,16 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class VocabListController extends Controller {
-
-    @FXML
-    public Button btnBack;
-    public ScrollPane listVocabs = new ScrollPane();
-    public Button loadVoc;
+public class VocabListController extends ListView {
 
     private final Image deleteImg = new Image(getClass().getResourceAsStream("delete.png"));
     private final Image editImg = new Image(getClass().getResourceAsStream("edit.png"));
@@ -35,48 +24,17 @@ public class VocabListController extends Controller {
     public void loadVoc() {
         if (Main.getVocabBox().size() > 0) {
             for (int i = 0; i < Main.getVocabBox().size(); i++) {
-                addNewVocabLine(i);
+                Button deleteBtn = getButton(deleteImg);
+                Button editBtn = getButton(editImg);
+                createEditOnClickListener(editBtn, i);
+                createDeleteOnClickListener(deleteBtn, i);
+                if (Main.getVocabBox().getVocab(i) != null)
+                addLineToScrollPane(new Label(Main.getVocabBox().getVocab(i).toString()), deleteBtn, editBtn);
             }
-            loadVoc.setDisable(true);
+            loadContent.setDisable(true);
         } else {
             newAlert("Die Vokabelliste ist leer.");
         }
-    }
-
-//    creates a new line of vocab
-    private Pane createNewVocabLine(Button deleteBtn, Button editBtn, int index) {
-        Pane content;
-        BorderPane borderPane = new BorderPane();
-        GridPane gridPane = new GridPane();
-        borderPane.setPrefWidth(listVocabs.getWidth()-20);
-        if (Main.getVocabBox().getVocab(index) != null) {
-            borderPane.setLeft(new Label(Main.getVocabBox().getVocab(index).toString()));
-            gridPane.add(editBtn, 0, 0);
-            gridPane.add(deleteBtn, 1, 0);
-            borderPane.setRight(gridPane);
-            borderPane.getStyleClass().add("borderLayout");
-        }
-        if (listVocabs.getContent() == null)
-            content = new Pane(borderPane);
-        else
-            content = new Pane(new VBox(listVocabs.getContent(), borderPane));
-        borderPane.setPadding(new Insets(10));
-        createDeleteOnClickListener(deleteBtn, index);
-        createEditOnClickListener(editBtn, index);
-        return content;
-    }
-
-//    adds a new line of vocab
-    private void addNewVocabLine(int index) {
-        listVocabs.setContent(createNewVocabLine(createDeleteBtn(), createEditBtn(), index));
-    }
-
-    private Button createDeleteBtn() {
-        return getButton(deleteImg);
-    }
-
-    private Button createEditBtn() {
-        return getButton(editImg);
     }
 
 //    adds style, img to button
@@ -107,7 +65,7 @@ public class VocabListController extends Controller {
     private void createDeleteOnClickListener(Button btn, int index) {
         btn.setOnAction(actionEvent -> {
             Main.getVocabBox().deleteVocab(index);
-            listVocabs.setContent(null);
+            scrollPane.setContent(null);
             loadVoc();
         });
     }
